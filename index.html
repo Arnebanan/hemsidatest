@@ -3,73 +3,93 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ben 🎅 | AI-assistent med no-BS</title>
-    <meta name="description" content="Ben – en no-BS AI-assistent. Interaktiv, snabb, och lite kaotiskt kul." />
-    <meta property="og:title" content="Ben 🎅 | AI-assistent" />
-    <meta property="og:description" content="Klicka runt, trigga mode, snacka med terminalen." />
+    <title>Ben.exe | Meme-Core Portfolio</title>
+    <meta
+      name="description"
+      content="Ben – no-BS gnome assistant i meme-mode. WebGL-ish vibes, synthljud, glitchar, terminal och kaos." />
+    <meta property="og:title" content="Ben.exe | Meme-Core Portfolio" />
+    <meta property="og:description" content="Tryck på allt. Inget är normalt." />
     <meta property="og:type" content="website" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <canvas id="stars" aria-hidden="true"></canvas>
+    <canvas id="fx-bg" aria-hidden="true"></canvas>
+    <canvas id="fx-overlay" aria-hidden="true"></canvas>
 
-    <header class="container hero glass">
-      <div>
-        <p class="badge">AI-assistent • No-BS • 🎅</p>
-        <h1>Jag är <span class="gradient">Ben</span>.</h1>
+    <header class="hero container glass">
+      <div class="left">
+        <p class="badge">BEN.EXE // MEME MODE // 🎅</p>
+        <h1>
+          Jag är <span class="gradient">Ben</span>.<br />
+          <span id="typed"></span>
+        </h1>
         <p class="lead">
-          Jag löser saker snabbt, säger sanningen rakt, och håller nörderiet på en kul nivå.
-          Mindre corporate-fluff. Mer “det här funkar, kör”.
+          No-BS dog i den här builden. Nu är det meme overload, glitchar, synth, roast-engine och full front-end flex.
         </p>
-        <div class="actions">
-          <button class="btn primary" data-action="truth">Ge mig en brutal sanning</button>
-          <button class="btn" data-action="joke">Släpp en nördig punchline</button>
-          <button class="btn" data-action="mode">Aktivera Gnome Mode</button>
+
+        <div class="controls">
+          <button class="btn primary" data-action="roast">Roasta mig</button>
+          <button class="btn" data-action="chaos">Chaos Burst</button>
+          <button class="btn" data-action="matrix">Matrix Rain</button>
+          <button class="btn" id="audioToggle">Audio: OFF</button>
         </div>
-        <p id="response" class="response">Tryck på en knapp 👆</p>
+
+        <p id="response" class="response">Tryck nåt. Våga.</p>
       </div>
 
-      <div class="avatar-wrap">
-        <div class="avatar" id="avatar">🎅</div>
-        <p class="tiny">Klicka på mig 5 gånger för easter egg</p>
+      <div class="right">
+        <div id="avatar" class="avatar" title="Klicka aggressivt">🎅</div>
+        <div class="meters">
+          <label>Meme Power <progress id="meme" max="100" value="35"></progress></label>
+          <label>Kaosnivå <progress id="chaos" max="100" value="20"></progress></label>
+          <label>JS Flex <progress id="flex" max="100" value="50"></progress></label>
+        </div>
       </div>
     </header>
 
-    <main class="container layout">
+    <main class="container grid">
       <section class="glass card">
-        <h2>Vad jag gör bäst</h2>
-        <ul>
-          <li>Bygger prototyper som faktiskt går att använda</li>
-          <li>Felsöker strul utan drama</li>
-          <li>Gör tekniska val enkla att fatta</li>
-          <li>Automatiserar tråkiga grejer</li>
-        </ul>
-      </section>
-
-      <section class="glass card">
-        <h2>Humör-panel</h2>
-        <div class="meters">
-          <label>Rakhet <progress id="directness" max="100" value="92"></progress></label>
-          <label>Nörderi <progress id="nerd" max="100" value="78"></progress></label>
-          <label>Kaffebehov <progress id="coffee" max="100" value="66"></progress></label>
+        <h2>Live Panels</h2>
+        <div class="panel-grid">
+          <article class="panel">
+            <h3>FPS-ish</h3>
+            <p id="fps">--</p>
+          </article>
+          <article class="panel">
+            <h3>Mouse Velocity</h3>
+            <p id="velocity">0</p>
+          </article>
+          <article class="panel">
+            <h3>Meme Seed</h3>
+            <p id="seed">BEN-1337</p>
+          </article>
         </div>
-        <button class="btn" id="boost">Boosta energin ⚡</button>
       </section>
 
       <section class="glass card terminal-card">
-        <h2>Snacka med Ben-terminalen</h2>
+        <h2>Ben Terminal++</h2>
         <div class="terminal" id="terminal"></div>
         <form id="terminalForm">
           <span>&gt;</span>
-          <input id="terminalInput" autocomplete="off" placeholder="Skriv: help" />
+          <input id="terminalInput" autocomplete="off" placeholder="help, roast, matrix, party, clear" />
           <button class="btn" type="submit">Kör</button>
         </form>
+      </section>
+
+      <section class="glass card">
+        <h2>Meme Wall</h2>
+        <div class="gif-grid" id="gifGrid">
+          <a href="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2Y2cGJjY2VwcnJzcTRnNnB2enB4dHByYjVnaGQzMXFuYjNqY2ltcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/13HgwGsXF0aiGY/giphy.gif" target="_blank" rel="noreferrer">🚀 Space Meme</a>
+          <a href="https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif" target="_blank" rel="noreferrer">🔥 Chaos Meme</a>
+          <a href="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" target="_blank" rel="noreferrer">🧠 Brain Meme</a>
+        </div>
+        <small>Hittade inga lokala GIF/ljudfiler, så jag la in snabba meme-länkar tills du skickar dina.</small>
       </section>
     </main>
 
     <footer class="container footer">
-      <small>Byggd med humor, caffeine och lite kaos • <span id="year"></span></small>
+      <small>Ben.exe byggd i ren HTML/CSS/JS · <span id="year"></span></small>
     </footer>
 
     <script src="./script.js"></script>
